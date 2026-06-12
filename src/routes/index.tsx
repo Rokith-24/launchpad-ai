@@ -21,9 +21,9 @@ import pdfChecklist from "@/assets/pdf-checklist.png";
 import pdfInstagram from "@/assets/pdf-instagram.png";
 
 const PAGE_TITLE =
-  "AI Starter Kit — Launch Your First Digital Product in 72 Hours for ₹99";
+  "Digital Vault — Turn Ideas Into Income in 72 Hours for ₹99";
 const PAGE_DESCRIPTION =
-  "Beginner-friendly AI Starter Kit: 3 PDF guides to research, create, launch and sell your first digital product in 72 hours using free AI tools. Instant download for ₹99.";
+  "Digital Vault AI Starter Kit: 3 PDF guides to research, create, launch and sell your first digital product in 72 hours using free AI tools. Instant download for ₹99.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
           "@type": "Product",
           name: "AI Starter Kit for Selling Digital Products",
           description: PAGE_DESCRIPTION,
-          brand: { "@type": "Brand", name: "AI Starter Kit" },
+          brand: { "@type": "Brand", name: "Digital Vault" },
           category: "Digital Product Bundle",
           offers: {
             "@type": "Offer",
@@ -189,10 +189,10 @@ function Nav() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-[color:var(--color-background)]/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
         <a href="#" className="flex items-center gap-2 font-bold">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[image:var(--gradient-primary)] shadow-[var(--shadow-glow)]">
-            <Sparkles className="h-4 w-4 text-white" />
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[image:var(--gradient-primary)] shadow-[var(--shadow-glow)] text-white text-xs font-black tracking-wide">
+            DV
           </span>
-          <span className="text-sm sm:text-base">AI Starter Kit</span>
+          <span className="text-sm sm:text-base">Digital Vault</span>
         </a>
         <a href={CTA_HREF} className="btn-primary px-4 py-2 text-sm">
           Get it for ₹99
@@ -210,16 +210,16 @@ function Hero() {
           <div className="text-center lg:text-left">
             <span className="chip mb-5">
               <Rocket className="h-3.5 w-3.5 text-[color:var(--color-accent)]" />
-              For complete beginners
+              Digital Products. Real Value.
             </span>
             <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
-              Launch Your First
+              Turn Ideas Into
               <br />
-              <span className="text-gradient">Digital Product in 72 Hours</span>
+              <span className="text-gradient">Income in 72 Hours</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg lg:mx-0">
-              A complete beginner system that shows you how to research, create, launch, and sell
-              digital products using free AI tools — even with zero design skills.
+              AI resources, guides and templates to research, create, launch and sell your first
+              digital product — using free AI tools, with zero experience required.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
@@ -243,10 +243,10 @@ function Hero() {
             <div className="absolute inset-0 -z-10 bg-[image:var(--gradient-soft)] blur-3xl" />
             <img
               src={bundleHero}
-              alt="AI Starter Kit bundle — three PDF guides"
+              alt="Digital Vault AI Starter Kit bundle — three PDF guides"
               width={1280}
               height={1024}
-              className="mx-auto w-full max-w-xl drop-shadow-[0_30px_60px_rgba(120,80,255,0.35)]"
+              className="mx-auto w-full max-w-xl mask-[radial-gradient(ellipse_72%_78%_at_50%_45%,black_38%,transparent_82%)]"
             />
           </div>
         </div>
@@ -609,7 +609,18 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer className="border-t border-border/60 py-10 text-center text-xs text-muted-foreground">
-      <p>© {new Date().getFullYear()} AI Starter Kit. Built for beginners who actually want to ship.</p>
+      <p className="mb-2">
+        <a
+          href="https://www.instagram.com/digitalvault.stores/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline transition-colors hover:text-foreground"
+        >
+          @digitalvault.stores
+        </a>
+        {" · "}Follow for free AI tools & digital product tips
+      </p>
+      <p>© {new Date().getFullYear()} Digital Vault. All rights reserved.</p>
     </footer>
   );
 }

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 AI Prompts That Actually Make You Money — Digital Vault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:          #050301;
+      --surface:     #0F0B03;
+      --card:        #181208;
+      --card2:       #201808;
+      --border:      rgba(210,168,40,0.18);
+      --gold:        #C9A227;
+      --gold-light:  #EAC84A;
+      --gold-dark:   #8A6510;
+      --gold-grad:   linear-gradient(135deg, #8A6510 0%, #C9A227 55%, #EAC84A 100%);
+      --text:        #F4EFE6;
+      --muted:       #87785A;
+      --success:     #2ECC71;
+    }
+
+    body {
+      background: #0A0703;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 50px 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ─── A4 PAGE ─── */
+    .page {
+      width: 794px;
+      height: 1123px;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg);
+      flex-shrink: 0;
+    }
+
+    /* ─── COVER ─── */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      background: #000;
+    }
+
+    .gold-bar { width: 100%; height: 5px; background: var(--gold-grad); }
+
+    .cover-nav {
+      padding: 30px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dv-lockup { display: flex; align-items: center; gap: 11px; }
+
+    .dv-badge {
+      width: 40px; height: 40px; border-radius: 9px;
+      background: var(--gold-grad);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 900; font-size: 13px; color: #000; letter-spacing: 0.5px;
+    }
+
+    .brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px; font-weight: 700; color: var(--gold);
+      letter-spacing: 1.8px; text-transform: uppercase;
+    }
+
+    .free-pill {
+      padding: 5px 13px; border-radius: 999px;
+      border: 1px solid rgba(210,168,40,0.35);
+      background: rgba(210,168,40,0.08);
+      font-size: 10px; font-weight: 700; color: var(--gold);
+      letter-spacing: 1.5px; text-transform: uppercase;
+    }
+
+    .cover-body {
+      flex: 1;
+      padding: 20px 48px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cover-divider {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    }
+
+    .cover-divider span {
+      font-size: 10px; font-weight: 700; letter-spacing: 3.5px;
+      text-transform: uppercase; color: var(--gold); white-space: nowrap;
+    }
+
+    .cover-divider::before, .cover-divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: var(--gold-grad); opacity: 0.4;
+    }
+
+    .big-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 148px; font-weight: 900; line-height: 0.9;
+      color: #C9A227;
+      text-shadow: 0 0 80px rgba(201,162,39,0.45), 0 4px 24px rgba(0,0,0,0.6);
+      letter-spacing: -6px; margin-bottom: 6px;
+    }
+
+    .cover-h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 50px; font-weight: 900; color: #fff;
+      line-height: 1.03; letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+
+    .cover-h1 .gold-text {
+      color: #EAC84A;
+    }
+
+    .cover-sub {
+      font-size: 13px; color: var(--muted); line-height: 1.65;
+      max-width: 440px; margin-bottom: 36px;
+    }
+
+    .cover-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .chip {
+      padding: 6px 13px; border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(210,168,40,0.07);
+      font-size: 10.5px; font-weight: 600; color: var(--gold);
+    }
+
+    .cover-footer {
+      padding: 20px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .cover-footer-left { line-height: 1.6; }
+    .cover-footer-left .handle { font-weight: 700; color: var(--gold); font-size: 12px; }
+    .cover-footer-left .tagline { font-size: 10px; color: var(--muted); }
+    .cover-footer-right { font-size: 9.5px; color: var(--muted); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ─── CONTENT PAGE ─── */
+    .content { padding: 38px 48px 48px; }
+
+    .pg-header {
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .pg-header-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9.5px; font-weight: 800; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    .pg-header-brand { font-size: 9px; color: var(--muted); font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; }
+
+    .section-intro { margin-bottom: 16px; }
+
+    .section-intro h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 21px; font-weight: 800; color: #fff;
+      line-height: 1.15; letter-spacing: -0.4px; margin-bottom: 5px;
+    }
+
+    .section-intro h2 .gold-text {
+      color: #EAC84A;
+    }
+
+    .section-intro p { font-size: 10.5px; color: var(--muted); line-height: 1.6; }
+
+    /* ─── PROMPT CARD ─── */
+    .prompt-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      margin-bottom: 11px;
+      overflow: hidden;
+    }
+
+    .pc-header {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(210,168,40,0.04);
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .pc-num {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: var(--gold-grad);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 900; font-size: 13px; color: #000; flex-shrink: 0;
+    }
+
+    .pc-title-wrap { flex: 1; }
+
+    .pc-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12.5px; font-weight: 800; color: #fff;
+    }
+
+    .pc-when { font-size: 9.5px; color: var(--gold); font-weight: 600; margin-top: 1px; }
+
+    .pc-body { padding: 11px 14px; }
+
+    .pc-label {
+      font-size: 8px; font-weight: 700; letter-spacing: 1.8px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+    }
+
+    .pc-text {
+      background: #0A0700;
+      border: 1px solid rgba(210,168,40,0.12);
+      border-left: 3px solid var(--gold);
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-size: 9.5px; line-height: 1.65;
+      color: #D5C9A5; font-family: 'Inter', sans-serif;
+      margin-bottom: 7px;
+    }
+
+    .pc-tip {
+      font-size: 9.5px; color: var(--muted); line-height: 1.55;
+      display: flex; gap: 5px;
+    }
+
+    .pc-tip-icon { color: var(--gold); font-size: 10px; flex-shrink: 0; }
+
+    /* ─── UPSELL STRIP ─── */
+    .upsell {
+      margin-top: 13px;
+      background: linear-gradient(135deg, #191208, #221A08);
+      border: 1px solid rgba(210,168,40,0.38);
+      border-radius: 13px;
+      padding: 17px 20px;
+      display: flex; align-items: center; gap: 18px;
+    }
+
+    .upsell-left { flex: 1; }
+
+    .upsell-eyebrow {
+      font-size: 8.5px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 5px;
+    }
+
+    .upsell-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; font-weight: 800; color: #fff;
+      line-height: 1.25; margin-bottom: 5px;
+    }
+
+    .upsell-desc { font-size: 9.5px; color: var(--muted); line-height: 1.55; }
+
+    .upsell-bullets { margin-top: 7px; display: flex; flex-direction: column; gap: 3px; }
+
+    .upsell-bullet {
+      font-size: 9.5px; color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .upsell-bullet::before {
+      content: '✓'; color: var(--gold); font-weight: 700; font-size: 10px;
+    }
+
+    .upsell-right {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 7px; flex-shrink: 0;
+    }
+
+    .upsell-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 32px; font-weight: 900;
+      color: #EAC84A;
+      line-height: 1;
+    }
+
+    .upsell-note { font-size: 8.5px; color: var(--muted); text-align: center; }
+
+    .upsell-btn {
+      padding: 8px 20px; border-radius: 8px;
+      background: var(--gold-grad);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 10.5px; color: #000;
+      white-space: nowrap; letter-spacing: 0.2px;
+    }
+
+    /* ─── PAGE FOOTER ─── */
+    .pg-footer {
+      position: absolute; bottom: 14px; left: 48px; right: 48px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 9px; color: var(--muted);
+    }
+
+    .pg-footer .brand { font-weight: 700; color: var(--gold); }
+
+    /* ─── BACK COVER ─── */
+    .back { display: flex; flex-direction: column; background: #000; }
+
+    .back-body {
+      flex: 1; padding: 50px 56px 0;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .back-eyebrow {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+    }
+
+    .back-eyebrow span {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold); white-space: nowrap;
+    }
+
+    .back-eyebrow::before, .back-eyebrow::after {
+      content: ''; flex: 1; height: 1px;
+      background: var(--gold-grad); opacity: 0.4;
+    }
+
+    .back-h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 38px; font-weight: 900; color: #fff;
+      line-height: 1.08; letter-spacing: -1px; margin-bottom: 10px;
+    }
+
+    .back-h2 .gold-text {
+      color: #EAC84A;
+    }
+
+    .back-sub { font-size: 12px; color: var(--muted); line-height: 1.65; margin-bottom: 30px; max-width: 460px; }
+
+    .bundle-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+
+    .bundle-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .bundle-card-icon {
+      width: 30px; height: 30px; border-radius: 7px;
+      background: var(--gold-grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; margin-bottom: 8px;
+    }
+
+    .bundle-card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px; font-weight: 800; color: #fff; margin-bottom: 6px; line-height: 1.25;
+    }
+
+    .bundle-card-bullets { display: flex; flex-direction: column; gap: 3px; }
+
+    .bcb {
+      font-size: 9.5px; color: var(--muted); line-height: 1.4;
+      display: flex; gap: 5px;
+    }
+
+    .bcb::before { content: '→'; color: var(--gold); font-size: 9px; flex-shrink: 0; margin-top: 1px; }
+
+    .back-cta-box {
+      background: linear-gradient(135deg, #181108, #231B08);
+      border: 1px solid rgba(210,168,40,0.40);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+
+    .back-cta-text { flex: 1; }
+
+    .back-cta-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px; font-weight: 900; color: #fff;
+      line-height: 1.2; margin-bottom: 4px;
+    }
+
+    .back-cta-desc { font-size: 10px; color: var(--muted); line-height: 1.55; }
+
+    .back-cta-right { display: flex; flex-direction: column; align-items: center; gap: 5px; flex-shrink: 0; }
+
+    .back-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 36px; font-weight: 900;
+      color: #EAC84A;
+      line-height: 1;
+    }
+
+    .back-price-note { font-size: 8.5px; color: var(--muted); }
+
+    .back-btn {
+      padding: 10px 28px; border-radius: 9px;
+      background: var(--gold-grad);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 12px; color: #000;
+    }
+
+    .back-footer {
+      padding: 20px 56px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .back-footer-brand { display: flex; align-items: center; gap: 10px; }
+
+    .back-footer-brand .handle { font-weight: 700; color: var(--gold); font-size: 11px; }
+    .back-footer-brand .tagline { font-size: 9.5px; color: var(--muted); }
+
+    .back-footer-follow {
+      font-size: 9.5px; color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 999px;
+      font-weight: 600;
+    }
+
+    /* ─── DOWNLOAD BUTTON ─── */
+    #dlBtn {
+      position: fixed; top: 16px; right: 16px; z-index: 999;
+      padding: 11px 24px;
+      background: var(--gold-grad);
+      color: #000;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 13px;
+      border: none; border-radius: 10px; cursor: pointer;
+      box-shadow: 0 8px 28px rgba(201,162,39,0.45);
+      transition: filter 0.15s, transform 0.15s;
+    }
+
+    #dlBtn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    #dlBtn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  </style>
+</head>
+<body>
+
+<button id="dlBtn" onclick="downloadPDF()">⬇ Download PDF</button>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 1 — COVER
+     ════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="gold-bar"></div>
+
+  <div class="cover-nav">
+    <div class="dv-lockup">
+      <div class="dv-badge">DV</div>
+      <span class="brand-name">Digital Vault</span>
+    </div>
+    <div class="free-pill">Free Resource</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-divider">
+      <span>Starter Resource</span>
+    </div>
+
+    <div class="big-num">5</div>
+    <div class="cover-h1">
+      AI Prompts That<br>
+      <span class="gold-text">Actually Make</span><br>
+      You Money
+    </div>
+    <div class="cover-sub">
+      Copy, paste and use these exact prompts to find your niche, validate your idea,
+      create your product, write captions that sell and price it right —
+      all using free AI tools, starting today.
+    </div>
+    <div class="cover-chips">
+      <div class="chip">Free to Use</div>
+      <div class="chip">Works with ChatGPT</div>
+      <div class="chip">Zero Experience Needed</div>
+      <div class="chip">Digital Products</div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-left">
+      <div class="handle">@digitalvault.stores</div>
+      <div class="tagline">Digital Products. Real Value.</div>
+    </div>
+    <div class="cover-footer-right">Turn ideas into income</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 2 — PROMPTS 1, 2, 3
+     ════════════════════════════════════════ -->
+<div class="page content">
+  <div class="pg-header">
+    <div class="pg-header-label">⚡ The 5 Prompts</div>
+    <div class="pg-header-brand">Digital Vault — Free Starter Resource</div>
+  </div>
+
+  <div class="section-intro">
+    <h2>From zero idea to <span class="gold-text">ready to sell</span> — in one day</h2>
+    <p>Use these prompts in order. Each one moves you one step closer to your first sale. Replace anything in [brackets] with your own details.</p>
+  </div>
+
+  <!-- Prompt 1 -->
+  <div class="prompt-card">
+    <div class="pc-header">
+      <div class="pc-num">1</div>
+      <div class="pc-title-wrap">
+        <div class="pc-title">Find Your Niche</div>
+        <div class="pc-when">Use when → you don't know what to sell</div>
+      </div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-label">Copy this prompt →</div>
+      <div class="pc-text">I want to sell a digital product but I'm not sure what niche to pick. Ask me 5 quick questions about my interests, skills, and problems I've personally solved. Then suggest 3 beginner-friendly digital product niches I can realistically enter in the next 30 days — with a one-line reason for each and a description of who the buyer would be.</div>
+      <div class="pc-tip"><span class="pc-tip-icon">💡</span> Answer the AI's questions honestly. The more specific your answers, the more targeted and profitable the niche suggestions will be.</div>
+    </div>
+  </div>
+
+  <!-- Prompt 2 -->
+  <div class="prompt-card">
+    <div class="pc-header">
+      <div class="pc-num">2</div>
+      <div class="pc-title-wrap">
+        <div class="pc-title">Validate Demand Before You Build</div>
+        <div class="pc-when">Use when → before creating anything</div>
+      </div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-label">Copy this prompt →</div>
+      <div class="pc-text">I'm thinking about creating a [ebook / checklist / template] about [your topic] for [your audience]. Without spending any money, give me 5 free ways to test if people actually want to buy this before I create it. For each method, tell me what a positive signal looks like vs a negative one, and how long it should take to test.</div>
+      <div class="pc-tip"><span class="pc-tip-icon">💡</span> Skip this step and you risk spending days building something nobody wants. Take 10 minutes to validate — it changes everything.</div>
+    </div>
+  </div>
+
+  <!-- Prompt 3 -->
+  <div class="prompt-card">
+    <div class="pc-header">
+      <div class="pc-num">3</div>
+      <div class="pc-title-wrap">
+        <div class="pc-title">Create Your Product Outline</div>
+        <div class="pc-when">Use when → your idea is validated and you're ready to build</div>
+      </div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-label">Copy this prompt →</div>
+      <div class="pc-text">Act as an expert digital product creator. I want to make a [ebook / checklist / template / guide] about [your topic] for [your audience]. Create a complete outline with: a compelling title, 5–7 sections with 3 sub-points each, and one clear actionable takeaway per section. Make it feel premium and genuinely worth paying for.</div>
+      <div class="pc-tip"><span class="pc-tip-icon">💡</span> Use this outline directly as your table of contents. Each section becomes one chapter or page of your finished product.</div>
+    </div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="brand">Digital Vault</span>
+    <span>5 AI Prompts That Actually Make You Money</span>
+    <span>Page 2 of 4</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 3 — PROMPTS 4, 5 + UPSELL
+     ════════════════════════════════════════ -->
+<div class="page content">
+  <div class="pg-header">
+    <div class="pg-header-label">⚡ The 5 Prompts — continued</div>
+    <div class="pg-header-brand">Digital Vault — Free Starter Resource</div>
+  </div>
+
+  <!-- Prompt 4 -->
+  <div class="prompt-card">
+    <div class="pc-header">
+      <div class="pc-num">4</div>
+      <div class="pc-title-wrap">
+        <div class="pc-title">Write an Instagram Caption That Sells</div>
+        <div class="pc-when">Use when → your product is ready and you need launch content</div>
+      </div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-label">Copy this prompt →</div>
+      <div class="pc-text">Write an Instagram caption to sell my digital product: [product name] about [topic], priced at [price]. The caption must: open with a scroll-stopping hook (no questions as the first line), describe 1 painful problem the reader has right now, show how my product solves it, list 3 bullet-point benefits, and end with a bold CTA. Keep it under 200 words. Give me 3 different versions with different hooks.</div>
+      <div class="pc-tip"><span class="pc-tip-icon">💡</span> Post all 3 versions across 3 consecutive days and track which one gets the most saves and DMs — that's your winning formula to repeat.</div>
+    </div>
+  </div>
+
+  <!-- Prompt 5 -->
+  <div class="prompt-card">
+    <div class="pc-header">
+      <div class="pc-num">5</div>
+      <div class="pc-title-wrap">
+        <div class="pc-title">Price It Right</div>
+        <div class="pc-when">Use when → you're deciding what to charge</div>
+      </div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-label">Copy this prompt →</div>
+      <div class="pc-text">I've created a [type of product] about [topic] targeting [your audience] in India. Help me price it correctly. Consider: the results it helps buyers get, what similar products sell for, the Indian digital product market, and beginner buyer psychology. Give me 3 pricing options — budget, standard and premium — with a one-line justification for each. Tell me which you'd recommend and why.</div>
+      <div class="pc-tip"><span class="pc-tip-icon">💡</span> Don't underprice out of fear. If your product saves someone 10 hours of research, it's worth charging for that time.</div>
+    </div>
+  </div>
+
+  <!-- Upsell Strip -->
+  <div class="upsell">
+    <div class="upsell-left">
+      <div class="upsell-eyebrow">🚀 Want the complete system?</div>
+      <div class="upsell-title">Get 100+ prompts + the full 72-hour<br>launch system — for ₹99</div>
+      <div class="upsell-bullets">
+        <div class="upsell-bullet">AI Prompt Machine — 100+ ready-to-use prompts across 5 modules</div>
+        <div class="upsell-bullet">72-Hour Launch Checklist — hour-by-hour action plan</div>
+        <div class="upsell-bullet">Instagram Launch Kit — captions, hooks &amp; 7-day content plan</div>
+      </div>
+    </div>
+    <div class="upsell-right">
+      <div class="upsell-price">₹99</div>
+      <div class="upsell-note">One-time · Instant download</div>
+      <div class="upsell-btn">Get it now →</div>
+    </div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="brand">Digital Vault</span>
+    <span>5 AI Prompts That Actually Make You Money</span>
+    <span>Page 3 of 4</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 4 — BACK COVER
+     ════════════════════════════════════════ -->
+<div class="page back">
+  <div class="gold-bar"></div>
+
+  <div class="back-body">
+    <div class="back-eyebrow">
+      <span>What's inside the full bundle</span>
+    </div>
+
+    <div class="back-h2">
+      5 prompts got you started.<br>
+      <span class="gold-text">100+ will get you paid.</span>
+    </div>
+    <div class="back-sub">
+      The AI Starter Kit is the complete system — research, create, launch and sell your
+      first digital product in 72 hours using free AI tools and zero experience.
+    </div>
+
+    <div class="bundle-cards">
+      <div class="bundle-card">
+        <div class="bundle-card-icon">⚡</div>
+        <div class="bundle-card-title">AI Prompt Machine</div>
+        <div class="bundle-card-bullets">
+          <div class="bcb">100+ copy-paste prompts</div>
+          <div class="bcb">5 modules: idea to launch</div>
+          <div class="bcb">Works with free ChatGPT</div>
+          <div class="bcb">Notion + PDF + Ebook flows</div>
+        </div>
+      </div>
+      <div class="bundle-card">
+        <div class="bundle-card-icon">✅</div>
+        <div class="bundle-card-title">72-Hour Launch Checklist</div>
+        <div class="bundle-card-bullets">
+          <div class="bcb">Hour-by-hour action plan</div>
+          <div class="bcb">Niche, product &amp; store steps</div>
+          <div class="bcb">Beginner-proof workflow</div>
+          <div class="bcb">Nothing left out</div>
+        </div>
+      </div>
+      <div class="bundle-card">
+        <div class="bundle-card-icon">📱</div>
+        <div class="bundle-card-title">Instagram Launch Kit</div>
+        <div class="bundle-card-bullets">
+          <div class="bcb">Caption + hook templates</div>
+          <div class="bcb">Reels script ideas</div>
+          <div class="bcb">7-day launch content plan</div>
+          <div class="bcb">Story swipe-up scripts</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-cta-box">
+      <div class="back-cta-text">
+        <div class="back-cta-title">Get everything. Launch this weekend.</div>
+        <div class="back-cta-desc">
+          One-time ₹99 — no subscription, no hidden charges.<br>
+          Instant download · Lifetime access · Follow @digitalvault.stores for more free resources.
+        </div>
+      </div>
+      <div class="back-cta-right">
+        <div class="back-price">₹99</div>
+        <div class="back-price-note">One-time payment</div>
+        <div class="back-btn">Get the full kit →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-footer">
+    <div class="back-footer-brand">
+      <div class="dv-badge" style="width:32px;height:32px;font-size:11px;border-radius:7px;">DV</div>
+      <div>
+        <div class="handle">Digital Vault</div>
+        <div class="tagline">@digitalvault.stores · Digital Products. Real Value.</div>
+      </div>
+    </div>
+    <div class="back-footer-follow">Follow for free resources</div>
+  </div>
+</div>
+
+
+<script>
+async function downloadPDF() {
+  const btn = document.getElementById('dlBtn');
+  btn.textContent = 'Generating…';
+  btn.disabled = true;
+
+  // Wait for fonts and give the browser a full render pass
+  await document.fonts.ready;
+  await new Promise(r => setTimeout(r, 600));
+
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [794, 1123], hotfixes: ['px_scaling'] });
+  const pages = document.querySelectorAll('.page');
+
+  for (let i = 0; i < pages.length; i++) {
+    const canvas = await html2canvas(pages[i], {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#050301',
+      logging: false,
+      removeContainer: true
+    });
+    const img = canvas.toDataURL('image/jpeg', 0.95);
+    if (i > 0) pdf.addPage([794, 1123]);
+    pdf.addImage(img, 'JPEG', 0, 0, 794, 1123);
+  }
+
+  pdf.save('Digital-Vault-5-AI-Prompts.pdf');
+  btn.textContent = '⬇ Download PDF';
+  btn.disabled = false;
+}
+</script>
+
+</body>
+</html>

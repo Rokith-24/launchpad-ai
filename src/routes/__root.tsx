@@ -77,13 +77,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0b0f1a" },
+      { name: "theme-color", content: "#0c0904" },
       { name: "robots", content: "index, follow" },
-      { property: "og:site_name", content: "AI Starter Kit" },
+      { property: "og:site_name", content: "Digital Vault" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico" },
     ],
@@ -93,9 +96,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "AI Starter Kit",
+          name: "Digital Vault",
           description:
-            "Beginner system to research, create, launch and sell digital products in 72 hours using free AI tools.",
+            "Turn ideas into income. AI resources, guides and templates to help you build and sell digital products.",
         }),
       },
     ],
