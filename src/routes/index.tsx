@@ -20,23 +20,89 @@ import pdfPrompt from "@/assets/pdf-prompt.png";
 import pdfChecklist from "@/assets/pdf-checklist.png";
 import pdfInstagram from "@/assets/pdf-instagram.png";
 
+const PAGE_TITLE =
+  "AI Starter Kit — Launch Your First Digital Product in 72 Hours for ₹99";
+const PAGE_DESCRIPTION =
+  "Beginner-friendly AI Starter Kit: 3 PDF guides to research, create, launch and sell your first digital product in 72 hours using free AI tools. Instant download for ₹99.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Launch Your First Digital Product in 72 Hours — ₹99 AI Starter Kit" },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "A beginner system to research, create, launch and sell your first digital product in 72 hours using free AI tools. Instant download for ₹99.",
+          "AI starter kit, digital products, sell digital products, ChatGPT prompts, launch checklist, Instagram launch kit, side hustle India, ₹99 digital product",
       },
-      { property: "og:title", content: "Launch Your First Digital Product in 72 Hours — ₹99" },
-      {
-        property: "og:description",
-        content:
-          "Step-by-step AI starter kit for beginners. No paid tools. No design skills. Instant download.",
-      },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESCRIPTION },
       { property: "og:type", content: "product" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:title", content: PAGE_TITLE },
+      { name: "twitter:description", content: PAGE_DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: "AI Starter Kit for Selling Digital Products",
+          description: PAGE_DESCRIPTION,
+          brand: { "@type": "Brand", name: "AI Starter Kit" },
+          category: "Digital Product Bundle",
+          offers: {
+            "@type": "Offer",
+            price: "99",
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+            url: "/",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "I'm a complete beginner. Will this work for me?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes — this bundle was designed specifically for beginners with zero experience.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do I need paid AI tools or subscriptions?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. The entire workflow uses the free versions of ChatGPT and other free tools.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do I need design skills?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. The kit shows you simple beginner-friendly ways to create everything without design experience.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is this a one-time payment?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. One-time ₹99 — no subscription, no hidden charges, lifetime access.",
+              },
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: LandingPage,
