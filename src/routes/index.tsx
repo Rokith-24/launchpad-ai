@@ -108,11 +108,17 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-const CTA_HREF = "#buy";
+const PAYMENT_URL = "https://superprofile.bio/vp/ai-starter-kit--launch-your-first-digital-product";
+const BUY_SECTION = "#buy";
 
 function PrimaryCTA({ className = "" }: { className?: string }) {
   return (
-    <a href={CTA_HREF} className={`btn-primary text-base sm:text-lg ${className}`}>
+    <a
+      href={PAYMENT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`btn-primary text-base sm:text-lg ${className}`}
+    >
       <Download className="h-5 w-5" />
       Get Instant Access — ₹99
       <ArrowRight className="h-4 w-4" />
@@ -122,7 +128,7 @@ function PrimaryCTA({ className = "" }: { className?: string }) {
 
 function SecondaryCTA() {
   return (
-    <a href={CTA_HREF} className="btn-ghost text-base">
+    <a href={BUY_SECTION} className="btn-ghost text-base">
       Start Building Today
     </a>
   );
@@ -194,7 +200,7 @@ function Nav() {
           </span>
           <span className="text-sm sm:text-base">Digital Vault</span>
         </a>
-        <a href={CTA_HREF} className="btn-primary px-4 py-2 text-sm">
+        <a href={PAYMENT_URL} target="_blank" rel="noopener noreferrer" className="btn-primary px-4 py-2 text-sm">
           Get it for ₹99
         </a>
       </div>
