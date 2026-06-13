@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Enable Nitro with the Vercel preset so `npm run build` outputs .vercel/output/
+  // which is the format Vercel expects for SSR/serverless deployments.
+  nitro: {
+    preset: "vercel",
+  },
 });
